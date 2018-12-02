@@ -1,26 +1,24 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import Navbar from './components/Navbar'
+import { Route, BrowserRouter } from 'react-router-dom'
+import Home from './components/Home'
+import PictureDetail from './components/PictureDetail'
+import PictureList from './components/PictureList';
+import WishListPage from './components/WishlistPage';
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      //calll Navbar component and configuring root for each page 
+      <BrowserRouter>
+        <div className="App">
+          <Navbar />
+          <Route exact path='/' component={Home}/>
+          <Route exact path='/WishList' component={WishListPage}/> 
+          <Route path='/albums/:post_id' component={PictureList} />
+          <Route path='/photos/:post_id' component={PictureDetail} />
+
+        </div>
+      </BrowserRouter>
     );
   }
 }

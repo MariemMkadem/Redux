@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
-import { addPost } from '../actions/postActions'
+import { addList } from '../actions/postActions'
 
 //create class component because i need to use handleClick function
 //sending request using axios to get the photos detail
@@ -22,7 +22,7 @@ class PictureDetail extends Component {
       });
   }
   handleClick = () => {
-    this.props.addPost(this.props.match.params.post_id);
+    this.props.addList(this.props.match.params.post_id);
     this.props.history.push('/WishList');
 
   }
@@ -70,7 +70,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     //dispatch action add 
-    addPost: (id) => dispatch(addPost(id))
+    addList: (id) => dispatch(addList(id))
   }
 }
 
